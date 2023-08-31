@@ -14,7 +14,7 @@ $phone_number =$_POST['phone_number'];
 $filename=$_FILES["photo"]["name"];
 $tempname=$_FILES["photo"]["tmp_name"];
 $folder = "./image/".$filename;
-$image=$filename;
+$image=$filename; 
 
 $uploadOk=1;
 $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
