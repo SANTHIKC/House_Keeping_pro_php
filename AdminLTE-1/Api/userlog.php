@@ -16,10 +16,10 @@ $type='user';
     
     
 
-$result = mysqli_query($conn, "SELECT * FROM user_reg WHERE user_id='$user_id'AND email='$email' AND user_name='$user_name' ");
+$result = mysqli_query($conn, "SELECT user_id,user_name,email,type,password FROM user_reg  ");
 
 if ($type == 'user') {
-    $myarray['data'] = 'User registration successful';
+    $myarray['data'] = ' successful';
 } else {
     $myarray['data'] = 'User type is not user';
 }  
@@ -36,7 +36,7 @@ if ($result) {
         $user_name=$row['user_name'];
 
         $_SESSION['user_id'] = $row['user_id'];
-        $myarray['message'] = 'success';
+        $myarray['message'] = $row;
     } else {
         $myarray['message'] = 'something went wrong';
     }
