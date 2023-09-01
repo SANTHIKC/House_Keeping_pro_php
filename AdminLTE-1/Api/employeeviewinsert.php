@@ -8,7 +8,7 @@ if(mysqli_connect_error())
 
 $name =$_POST['name'];
 $email =$_POST['email'];
-$hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
+$password=$_POST['password'];
 $address =$_POST['address'];
 $phone_number =$_POST['phone_number'];
 $experience =$_POST['experience'];
@@ -38,7 +38,7 @@ else
 
 
 
-  $sql=mysqli_query($conn,"INSERT INTO employee_reg(name,email,password,address,phone_number,experience,service_type,photo) VALUES('$name','$email','$hash','$address','$phone_number','$experience','$service_type','$image')");
+  $sql=mysqli_query($conn,"INSERT INTO employee_reg(name,email,password,address,phone_number,experience,service_type,photo) VALUES('$name','$email','$password','$address','$phone_number','$experience','$service_type','$image')");
 if($sql)
 {
      $myarray['message'] = 'Added';

@@ -8,7 +8,7 @@ if(mysqli_connect_error())
 
 $user_name =$_POST['user_name'];
 $email =$_POST['email'];
-$hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
+$password=$_POST['password'];
 $address =$_POST['address'];
 $phone_number =$_POST['phone_number'];
 $filename=$_FILES["photo"]["name"];
@@ -37,7 +37,8 @@ else
 
 
 
-  $sql=mysqli_query($conn,"INSERT INTO user_reg(user_name,email,password,address,phone_number,photo) VALUES('$user_name','$email','$hash','$address','$phone_number','$image')");
+
+  $sql=mysqli_query($conn,"INSERT INTO user_reg(user_name,email,password,address,phone_number,photo,type) VALUES('$user_name','$email','$password','$address','$phone_number','$image','user')");
 if($sql)
 {
      $myarray['message'] = 'Added';
