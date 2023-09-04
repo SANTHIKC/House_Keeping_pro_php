@@ -38,7 +38,7 @@ else
 
 
 
-  $sql=mysqli_query($conn,"INSERT INTO employee_reg(name,email,password,address,phone_number,experience,service_type,photo) VALUES('$name','$email','$password','$address','$phone_number','$experience','$service_type','$image')");
+  $sql=mysqli_query($conn,"INSERT INTO employee_reg(name,email,password,address,phone_number,experience,service_type,photo,type) VALUES('$name','$email','$password','$address','$phone_number','$experience','$service_type','$image','employee')");
 if($sql)
 {
      $myarray['message'] = 'Added';

@@ -6,25 +6,36 @@ if (mysqli_connect_errno()) {
     die("Error in connection");
 }
 
-$email = "abin@gmail.com"; 
 
-$result = mysqli_query($conn, "SELECT * FROM employee_reg WHERE email='$email'");
+$email =$_POST['email'];
+$password=$_POST['password'];   
+
+  
+    
+
+$result = mysqli_query($conn, "SELECT emp_id,name,email,type,password FROM employee_reg WHERE email='$email' ");
+
 
 if ($result) {
     $row = mysqli_fetch_assoc($result);
     $count = mysqli_num_rows($result);
+    $type=$row['type'];
+    
+    if ($count == 1 &&  $type =='employee' ) {
 
-    if ($count == 1) {
-        // Fetch both email and password from the database
-        $emailFromDB = $row['email'];
-        $passwordFromDB = $row['password'];
-
-        
+        $email = $row['email'];
+        $password = $row['password'];
+    
         $_SESSION['emp_id'] = $row['emp_id'];
-        $myarray['message'] = 'success';
+        $myarray['data'] = 'successful';
+
+        $myarray['message'] = $row;
     } else {
         $myarray['message'] = 'something went wrong';
     }
 
     echo json_encode($myarray);
 }
+elseif()
+?>
+

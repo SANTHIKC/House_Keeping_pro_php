@@ -18,7 +18,7 @@ $image=$filename;
 
 $uploadOk=1;
 $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif")
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "avif")
 {
     
     $uploadOk =0;
