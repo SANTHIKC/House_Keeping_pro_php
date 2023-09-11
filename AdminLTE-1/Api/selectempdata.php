@@ -10,7 +10,7 @@ if (mysqli_connect_errno()) {
 
 
 
-$query = mysqli_query($conn,"SELECT * FROM user_reg ");
+$query = mysqli_query($conn,"SELECT * FROM employee_reg ");
 $data=mysqli_fetch_assoc($query);
 if($query)
 {
