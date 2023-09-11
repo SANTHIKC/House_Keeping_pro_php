@@ -18,7 +18,7 @@ $image=$filename;
 
 $uploadOk=1;
 $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "avif")
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif")
 {
     
     $uploadOk =0;
@@ -34,20 +34,21 @@ else
 }
 
 
-
-
-
-
-  $sql=mysqli_query($conn,"INSERT INTO user_reg(user_name,email,password,address,phone_number,photo,type) VALUES('$user_name','$email','$password','$address','$phone_number','$image','user')");
-if($sql)
+$sql=mysqli_query($conn,"INSERT INTO user_reg(user_name,email,address,phone_number,photo,type) VALUES('$user_name','$email','$address','$phone_number','$image','user')");
+ $user_id = mysqli_insert_id($conn);
+ $log=mysqli_query($conn, "INSERT INTO login_emp_user(log_id,email,password,type)values('$user_id','$email','$password','user')");
+if($log)
 {
      $myarray['message'] = 'Added';
-     $query = mysqli_query($conn,"SELECT * FROM user_reg  ");
-     $data=mysqli_fetch_assoc($query);
-      if($query)
+     $query = mysqli_query($conn,"SELECT * FROM user_reg ");
+     
+      $data=mysqli_fetch_assoc($query);
+      
+if($query)
 {
      $myarray['data'] =$data ;
 }
+
 }
 else
 {
@@ -56,4 +57,11 @@ else
 echo json_encode($myarray);
 
 
+
+
+
 ?>
+
+
+
+  
