@@ -9,9 +9,9 @@ if (mysqli_connect_errno()) {
 }
 
 
-$emp_id =$_SESSION['id'];
-echo $emp_id;
-$query = mysqli_query($conn,"SELECT * FROM employee_reg  WHERE emp_id = '$emp_id' ");
+$emp_id =$_POST['emp_id'];
+
+$query = mysqli_query($conn,"SELECT * FROM employee_reg WHERE emp_id = '$emp_id'");
 $data=mysqli_fetch_assoc($query);
 if($data)
 {
